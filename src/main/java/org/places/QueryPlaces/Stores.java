@@ -1,5 +1,6 @@
 package org.places.QueryPlaces;
 
+import com.vividsolutions.jts.geom.Point;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Access;
@@ -64,6 +65,16 @@ public class Stores implements Serializable {
   private Float longitude;
   @Column(name = "insertDate")
   private Date insertDate;
+  @Column(columnDefinition = "geometry,4326")
+  private Point geom;
+
+  public Point getGeom() {
+    return geom;
+  }
+
+  public void setGeom(Point geom) {
+    this.geom = geom;
+  }
 
   public String getBrand() {
     return brand;

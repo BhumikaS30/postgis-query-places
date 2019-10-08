@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "stores")
 @Access(value = AccessType.FIELD)
-public class Stores implements Serializable {
+public class Store implements Serializable {
 
   private static final long serialVersionUID = -2343243243242432341L;
 
@@ -65,7 +65,7 @@ public class Stores implements Serializable {
   private Float longitude;
   @Column(name = "insertDate")
   private Date insertDate;
-  @Column(columnDefinition = "geometry,4326")
+  @Column(columnDefinition = "geometry")
   private Point geom;
 
   public Point getGeom() {

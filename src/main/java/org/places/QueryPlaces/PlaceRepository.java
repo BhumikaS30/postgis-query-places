@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlaceRepository extends CrudRepository<Store, Integer> {
 
-  List<Store> findByfacilityid(Integer facilityid);
-  @Query(value = "SELECT  Brand, geom,latitude,longitude ,Store_Number,facilityid FROM stores WHERE ST_DWithin(geom, ST_MakePoint(-122.325959,47.625138)::geography, 5000)",nativeQuery = true)
+  @Query(value = "SELECT  Brand, geom,latitude,longitude ,Store_Number,facilityid FROM stores WHERE ST_DWithin(geom, ST_MakePoint(-122.325959,47.625138), 5000)",nativeQuery = true)
   List<Store> findStores();
 }

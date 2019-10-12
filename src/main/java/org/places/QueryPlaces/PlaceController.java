@@ -1,6 +1,7 @@
 package org.places.QueryPlaces;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +14,9 @@ public class PlaceController {
   PlaceRepository repository;
 
   @GetMapping("/stores/{facilityid}")
-  public List<Store> getStore(@PathVariable Integer facilityid) {
+  public Optional<Store> getStore(@PathVariable Integer facilityid) {
 
-    List<Store> stores = repository.findByfacilityid(facilityid);
+    Optional<Store> stores = repository.findById(facilityid);
     return stores;
   }
 

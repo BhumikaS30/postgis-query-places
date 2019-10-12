@@ -15,10 +15,9 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    runtimeOnly 'org.postgresql:postgresql'
     compile group: 'com.vividsolutions', name: 'jts', version: '1.13'
     compile group: 'org.hibernate', name: 'hibernate-spatial', version: '5.4.6.Final'
+    testCompile group: 'net.postgis', name: 'postgis-jdbc', version: '2.1.7.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'com.h2database:h2'
-    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
+    testCompile "org.testcontainers:postgresql:1.12.2"
 }

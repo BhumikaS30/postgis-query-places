@@ -65,7 +65,7 @@ public class Store implements Serializable {
   private Float longitude;
   @Column(name = "insertDate")
   private Date insertDate;
-  @Column(columnDefinition = "geometry")
+  @Column(columnDefinition = "Point")
   private Point geom;
 
   public Point getGeom() {
@@ -74,6 +74,15 @@ public class Store implements Serializable {
 
   public void setGeom(Point geom) {
     this.geom = geom;
+  }
+
+  public Store() {
+  }
+
+  public Store(Integer storeNumber, String name, Integer facilityid) {
+    this.storeNumber = storeNumber;
+    this.name = name;
+    this.facilityid = facilityid;
   }
 
   public String getBrand() {

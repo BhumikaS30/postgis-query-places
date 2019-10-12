@@ -1,8 +1,6 @@
-package org.places.QueryPlaces;
+package org.places.queryplaces;
 
-import java.sql.ResultSet;
 import java.util.Optional;
-import javax.sql.DataSource;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,10 +23,7 @@ public class QueryPlacesApplicationTests {
 
   @ClassRule
   public static PostgreSQLContainer postgreSQLContainer =
-      new PostgreSQLContainer("postgres:11.1")
-          .withDatabaseName("integration-tests-db")
-          .withUsername("sa")
-          .withPassword("sa");
+      new PostgreSQLContainer("kartoza/postgis");
 
   static class Initializer
       implements ApplicationContextInitializer<ConfigurableApplicationContext> {
@@ -44,13 +39,12 @@ public class QueryPlacesApplicationTests {
   @Test
   @Transactional
   public void testSimple() {
-    try (PostgreSQLContainer postgres = new PostgreSQLContainer<>()) {
-      postgres.start();
+      postgreSQLContainer.start();
       insertStores();
       Optional<Store> byId = placeRepository.findById(10004);
       System.out.println(byId.isPresent());
       assert (byId.isPresent());
-    }
+
   }
 
   private void insertStores() {

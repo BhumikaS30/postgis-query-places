@@ -1,4 +1,4 @@
-package org.places.QueryPlaces;
+package org.places.queryplaces;
 
 import java.util.List;
 import java.util.Optional;

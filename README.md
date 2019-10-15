@@ -50,5 +50,5 @@
 
  ```docker build -t postgis-query-places:latest .```
 
- ## Link run the application container with the running DB container
- ```docker run -t --name postgis-query-places --link postgis  postgis-query-places```
+ ##  run the application container with the running DB container
+ ```docker run -p 8080:8080 -t --name postgis-query-places --net=host postgis-query-places```

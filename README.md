@@ -43,12 +43,12 @@
 - SELECT Brand, geom,latitude,longitude ,Store_Number,facilityid FROM stores
  WHERE ST_DWithin(geom, ST_MakePoint(-122.325959,47.625138)::geography, 5000);
 
-- SELECT  Brand, geom,latitude,longitude ,Store_Number,facilityid FROM stores
+- SELECT  Brand, geom,latitude,longitude ,Store_Number,facilitygit id FROM stores
  WHERE ST_Distance_Sphere(geom,ST_MakePoint(-122.325959,47.625138)::geography ) < 5000;
 
- ##Commands to build  docker image for the application
+ ## Commands to build  docker image for the application
 
  ```docker build -t postgis-query-places:latest .```
 
- ##Link run the application container with the running DB container
+ ## Link run the application container with the running DB container
  ```docker run -t --name postgis-query-places --link postgis  postgis-query-places```
